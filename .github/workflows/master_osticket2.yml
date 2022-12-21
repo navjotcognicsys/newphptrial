@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v1
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_b98c58460d2e4d20930258382307d2b8 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_fef1c11bf0c543309a205bbf082a0fe9 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_f66eb649980e4af49bc395293666920f }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_01c4209f282f4890963d2ffca1dee899 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_b98c58460d2e4d20930258382307d2b8 }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f66eb649980e4af49bc395293666920f }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'osticket2'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_218d1e05c702482199037268217739e5 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_b98c58460d2e4d20930258382307d2b8 }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_6beda98e1ef044ff93afdbbfc203f1a5 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_f66eb649980e4af49bc395293666920f }}/appsvc/staticsite:${{ github.sha }}'
